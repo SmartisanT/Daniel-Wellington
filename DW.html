@@ -6,16 +6,26 @@
 	<title>Daniel Wellington</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.4/jquery.fullPage.css">
 	<style type="text/css">
-		.section1{background-color: red;}
+		.section1{background-color: red;padding-top: 70px;}
 		.section2{background-color: blue;}
 		.section3{background-color: green;}
 		.section4{background-color: orange;}
+		.section1 h1{margin: 0;padding:0;height: 50px;width: 200px;margin-left: 1100px;margin-bottom: 100px}
+		.section1 p{height: 50px;width: 800px;margin-left: -500px;margin-bottom: 100px}
+		.section2 h1{margin: 0;padding:0;height: 50px;width: 200px;margin-left: 1100px;margin-bottom: 100px}
+		.section2 p{height: 50px;width: 800px;margin-left: -500px;margin-bottom: 100px}
 	</style>
 </head>
 <body>
 	<div id="fullpage">
-		<div class="section section1">页面一</div>
-		<div class="section section2">页面二</div>
+		<div class="section section1">
+			<h1>丹尼尔惠灵顿</h1>
+			<p>丹尼尔·惠灵顿（Daniel Wellington）是来自瑞典的手表品牌，现总部位于瑞典东南部城市乌普萨拉（Uppsala）。多彩的尼龙表带，轻薄的表身、干净的表盘塑造了DW腕表百搭的书卷味的气质，让众多时尚达人爱不释手，在近年来的全球时尚圈掀起了一股绅士表款的风潮。</p>
+		</div>
+		<div class="section section2">页面二
+			<h1>丹尼尔惠灵顿</h1>
+			<p>丹尼尔·惠灵顿（Daniel Wellington）是来自瑞典的手表品牌，现总部位于瑞典东南部城市乌普萨拉（Uppsala）。多彩的尼龙表带，轻薄的表身、干净的表盘塑造了DW腕表百搭的书卷味的气质，让众多时尚达人爱不释手，在近年来的全球时尚圈掀起了一股绅士表款的风潮。</p>
+		</div>
 		<div class="section section3">页面三</div>
 		<div class="section section4">页面四</div>
 	</div>
@@ -25,7 +35,49 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/move.js/0.5.0/move.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
-		$('#fullpage').fullpage();
+		$('#fullpage').fullpage({
+			anchors:['page1','page2','page3','page4'],
+			verticalCentered:false,
+			navigation:true,
+			navigationTooltips:['111','222','333','444'],
+			afterLoad:function(link,index){
+				switch(index){
+					case 1:
+						move('.section1 h1').set('margin-left','5%').end();
+						move('.section1 p').set('margin-left','5%').end();
+					break;
+					case 2:
+						move('.section2 h1').set('margin-left','45%').end();
+						move('.section2 p').set('margin-left','10%').end();
+					break;
+					case 3:
+					break;
+					case 4:
+					break;
+					default:
+					break;
+				}
+			},
+			onLeave:function(link,index){
+				switch(index){
+					case 1:
+						move('.section1 h1').set('margin-left','1100px').end();
+						move('.section1 p').set('margin-left','-500px').end();
+					break;
+					case 2:
+						move('.section2 h1').set('margin-left','1100px').end();
+						move('.section2 p').set('margin-left','-500px').end();
+					break;
+					case 3:
+					break;
+					case 4:
+					break;
+					default:
+					break;
+				}
+			},
+
+		});
 	})
 </script>
 </body>
